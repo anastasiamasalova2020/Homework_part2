@@ -1,0 +1,19 @@
+h2{
+  color:#8B4513;
+  padding-top: 50px;
+  padding-bottom:20px;
+  text-align: center;
+  font-family: 'Sansita Swashed', cursive;
+}
+form {
+  text-align: center;
+}
+table, td{
+  border-collapse: collapse;
+  width: 40%;
+  padding: 10px;
+  border: 3px double black;
+  margin: auto auto;
+  text-align: center;
+  font-family: 'Sansita Swashed', cursive;
+}
