@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Movie_searcher</title>
+    <link rel="stylesheet" href="my_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <script src="jQuery.js"></script>
+    <script>
+$(function() {
+  $("#enter").click(function(){
+   var film  =  $("#query").val();
+
+   $.ajax({
+     type: 'GET',
+     url: 'https://api.themoviedb.org/3/search/movie',
+     data:{'query' :film , 'api_key' : 'de21cc49fe93b63229bc273e3d2001aa'},
+     success: function(data){
+      var table = document.getElementById("table");
+      for (var i = 0; i < data.results.length; i++) {
+        $.each(data.results[i], function(d1,d2){
+          var row = table.insertRow();
+          var с1 = row.insertCell(0);
+          var с2 = row.insertCell(1);
+          с1.innerHTML = d1;
+          с2.innerHTML = d2;
+      })
+     }
+     }
+   });
+ })
+ $("#reset").click(function() {
+  $("#result").load(location.href+" #result>*","");
+ });
+ })
+</script>
+</head>
+
+<body background="background.jpeg">
+<div id="search">
+    <h2>Search film</h2>
+    <form>
+        <input id="query" type="text" name="film" size="30" placeholder="The name of the film">
+        <button id="enter" type="submit"  onclick="return false">Enter</button>
+        <input id='reset' type="reset" value="Reset">
+    </form>
+</div>
+
+<div id="result">
+    <table id="table">
+
+    </table>
+</div>
+</body>
+</html>
